@@ -1,0 +1,164 @@
+.main {
+  height: 100vh;
+  width: 100%;
+}
+
+.date-picker {
+  height: 98px;
+  width: 100%;
+  /* background: #181b2b !important; */
+  /* background: #131522 !important; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 40px;
+}
+
+.loader {
+  height: 2px;
+  width: 100%;
+}
+
+@keyframes loader-animation {
+  0% {
+    left: -100%;
+  }
+  49% {
+    left: 100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.loader.start .bar {
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  background-color: #185adb;
+  animation-name: loader-animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px;
+  row-gap: 50px;
+}
+
+.wrapper .row {
+  width: 100%;
+  height: calc(50% - 25px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chart-container .header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.chart-container .header h2 {
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #a5acb9;
+}
+
+.chart-container .header p {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #a5acb9;
+  background: #181b2b;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.charts-flex-column {
+  width: 100%;
+  height: calc(100% - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+
+.flex .icon {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.flex .icon svg {
+  width: 10px;
+  height: 10px;
+  fill: #a5acb9;
+}
+
+.flex .icon.up {
+  background: #9d074b;
+}
+
+.flex .icon.down {
+  background: #0d947b;
+}
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.buttons-container {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttons-container .button {
+  padding: 10px 15px;
+  color: #a5acb9;
+  background-color: #181b2b;
+}
+
+.buttons-container .button.active {
+  background-color: #865ee1;
+  color: #181b2b;
+}
+
+.three-charts-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+}

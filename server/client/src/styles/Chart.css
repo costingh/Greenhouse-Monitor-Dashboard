@@ -1,0 +1,109 @@
+.chart-container {
+  margin: 20px 30px;
+  padding: 20px 30px;
+  border-radius: 8px;
+  background-color: #131522;
+  /* background-color: #181b2b; */
+  height: 100%;
+}
+
+.barchart {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.barchart .canvas-wrapper {
+  height: 70px;
+  width: 70px;
+  margin-right: 40px;
+  position: relative;
+}
+
+.piechart .canvas-wrapper {
+  position: relative;
+}
+
+.piechart .canvas-wrapper svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  fill: #a5acb9;
+  width: 50px;
+  height: 50px;
+}
+
+.piechart .canvas-wrapper div {
+  position: relative;
+  height: 150px;
+  width: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.barchart h1 {
+  color: #a5acb9;
+  font-size: 40px;
+  font-weight: 500;
+  margin: 0px;
+}
+
+.barchart span {
+  font-size: 23px;
+  color: #a5acb9;
+  margin-left: -5px;
+}
+
+.barchart p {
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  font-weight: 400;
+  color: #464e60;
+  margin: 0px;
+}
+
+.line-chart-container {
+  height: 100%;
+  width: 100%;
+}
+
+.text h1 {
+  text-align: center;
+  color: #a5acb9;
+}
+
+.text p {
+  text-align: center;
+  color: #464e60;
+  margin-bottom: 30px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 50px;
+}
+
+.flex .left,
+.flex .right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.flex h2 {
+  font-size: 16px;
+  color: #a5acb9;
+}
+
+.flex p {
+  font-size: 14px;
+  color: #464e60;
+  margin-bottom: 0px;
+  margin-top: 3px;
+}

@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  /* font-family: 'Poppins', sans-serif; */
+
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /*  background: #131522; */
+  background: #181b2b;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
