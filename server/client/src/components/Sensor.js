@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/Sensor.css";
 import SensorChart from "./SensorChart";
 
@@ -54,7 +54,14 @@ function Sensor({ chartID, datasets, sensorName, sensorNumber }) {
       </div>
       <div className="sensor-footer">
         <p>Current {sensorName}</p>
-        <span> 75.65 F</span>
+        <span>
+          {sensorName === "Humidity"
+            ? datasets.length && datasets[datasets.length - 1].humidity + "%"
+            : sensorName === "Moisture"
+            ? datasets.length && datasets[datasets.length - 1].temperature + "%"
+            : datasets.length &&
+              datasets[datasets.length - 1].luminosity + " LUX"}
+        </span>
         <br></br>
         <div style={{ color: "#a5acb9", cursor: "pointer" }}>More info</div>
         <div

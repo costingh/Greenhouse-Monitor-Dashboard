@@ -68,7 +68,7 @@ const SensorChart = ({ datasets, chartID, sensorName }) => {
       const myChart = new Chart(ctx, {
         type: "line",
         data: {
-          labels: timestamp.slice(-8), // get last 12 results,
+          labels: timestamp.slice(-8), // get last 8 results,
           datasets: [
             {
               backgroundColor: "transparent",
