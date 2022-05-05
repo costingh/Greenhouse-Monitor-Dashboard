@@ -29,7 +29,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let humidityInCurrentDay = humidity.slice(-currentHour);
       let averageHumidity = 0;
-      humidityInCurrentDay.map((h) => (averageHumidity += parseFloat(h)));
+      humidityInCurrentDay.map((h) => (averageHumidity += parseInt(h)));
       averageHumidity /= humidityInCurrentDay.length;
       datasetVal.push(averageHumidity);
       datasetVal.push(100 - averageHumidity);
@@ -40,7 +40,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let moistureInCurrentDay = moisture.slice(-currentHour);
       let averageMoisture = 0;
-      moistureInCurrentDay.map((h) => (averageMoisture += h));
+      moistureInCurrentDay.map((h) => (averageMoisture += parseInt(h)));
       averageMoisture /= moisture.length;
       datasetVal.push(averageMoisture);
       datasetVal.push(100 - averageMoisture);
@@ -51,7 +51,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let luminosityInCurrentDay = luminosity.slice(-currentHour);
       let averageLuminosity = 0;
-      luminosityInCurrentDay.map((h) => (averageLuminosity += h));
+      luminosityInCurrentDay.map((h) => (averageLuminosity += parseInt(h)));
       averageLuminosity /= luminosity.length;
       datasetVal.push(averageLuminosity);
       datasetVal.push(2500 - averageLuminosity);
