@@ -49,6 +49,32 @@ app.get("/add-measurements", async (req, res) => {
   });
 });
 
+app.post("/update", async (req, res) => {
+  fs.readFile(DB_PATH, "utf-8", (err, jsonString) => {
+    if (err) return console.log("Error in reading from db");
+
+    let { temperature, humidity, moisture, luminosity } = req.body;
+    let valuesArr = JSON.parse(jsonString);
+    let obj = {
+      temperature: temperature,
+      humidity: humidity,
+      moisture: moisture,
+      luminosity: luminosity,
+      timestamp: new Date(),
+    };
+
+    valuesArr.push(obj);
+
+    fs.writeFile(DB_PATH, JSON.stringify(valuesArr), (err) => {
+      if (err) return console.log("Error in updating db");
+      res.status(200).json({
+        message: "Values saved",
+        value: valuesArr[valuesArr.length - 1],
+      });
+    });
+  });
+});
+
 app.post("/add-data", async (req, res) => {
   fs.readFile(DB_PATH, "utf-8", (err, jsonString) => {
     if (err) return console.log("Error in reading from db");
