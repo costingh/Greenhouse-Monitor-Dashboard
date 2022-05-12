@@ -6,11 +6,11 @@
 ## Continut
 
 - [Introducere](#introducere)
-- [Alegerea Componentelor](#alegere-componente)
+- [Alegerea Componentelor](#alegerea-componentelor)
   - [Placa Arduino](#placa-arduino)
     - [Modul conectare WiFi](#modul-conectare-wifi)
     - [Senzori](#senzori)
-- [Asamblarea Componentelor](#asamblare-componente)
+- [Asamblarea Componentelor](#asamblarea-componentelor)
 - [Descriere Server](#descriere-server)
   - [Pornire server](#pornire-server)
   - [Realizare comunicare](#realizare-comunicare)
