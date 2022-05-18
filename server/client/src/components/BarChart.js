@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { Chart, registerables } from "chart.js";
 import "../styles/Chart.css";
+import moment from "moment";
 
 Chart.register(...registerables);
 
@@ -29,7 +30,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let humidityInCurrentDay = humidity.slice(-currentHour);
       let averageHumidity = 0;
-      humidityInCurrentDay.map((h) => (averageHumidity += parseInt(h)));
+      humidityInCurrentDay.map((h) => (averageHumidity += parseFloat(h)));
       averageHumidity /= humidityInCurrentDay.length;
       datasetVal.push(averageHumidity);
       datasetVal.push(100 - averageHumidity);
@@ -40,7 +41,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let moistureInCurrentDay = moisture.slice(-currentHour);
       let averageMoisture = 0;
-      moistureInCurrentDay.map((h) => (averageMoisture += parseInt(h)));
+      moistureInCurrentDay.map((h) => (averageMoisture += parseFloat(h)));
       averageMoisture /= moisture.length;
       datasetVal.push(averageMoisture);
       datasetVal.push(100 - averageMoisture);
@@ -51,7 +52,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
       let currentHour = new Date().getHours();
       let luminosityInCurrentDay = luminosity.slice(-currentHour);
       let averageLuminosity = 0;
-      luminosityInCurrentDay.map((h) => (averageLuminosity += parseInt(h)));
+      luminosityInCurrentDay.map((h) => (averageLuminosity += parseFloat(h)));
       averageLuminosity /= luminosity.length;
       datasetVal.push(averageLuminosity);
       datasetVal.push(2500 - averageLuminosity);
@@ -120,7 +121,7 @@ function BarChart({ datasets, chartID, primaryColor, measurementName }) {
           ? "30% - 40%"
           : measurementName === "Moisture"
           ? "10% - 18%"
-          : "	1000 - 2500 LUX"}
+          : "	30% - 61%"}
       </div>
     </div>
   );

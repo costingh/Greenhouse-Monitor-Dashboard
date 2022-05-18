@@ -29,8 +29,8 @@ const SensorChart = ({ datasets, chartID, sensorName }) => {
         timestamp.push(moment(value.timestamp).format("LT")); // 17:52
       });
 
-      chart.config._config.data.labels = timestamp;
-      chart.config._config.data.datasets[0].data =
+      chart.config.data.labels = timestamp;
+      chart.data.datasets[0].data =
         sensorName === "Humidity"
           ? hum.slice(-8)
           : sensorName === "Moisture"
@@ -68,7 +68,7 @@ const SensorChart = ({ datasets, chartID, sensorName }) => {
       const myChart = new Chart(ctx, {
         type: "line",
         data: {
-          labels: timestamp.slice(-8), // get last 8 results,
+          labels: timestamp.slice(-8), // get last 12 results,
           datasets: [
             {
               backgroundColor: "transparent",
@@ -94,8 +94,7 @@ const SensorChart = ({ datasets, chartID, sensorName }) => {
               ticks: {
                 color: "#464e60",
                 callback: function (value, index, ticks) {
-                  if (sensorName === "Light") return value + " LUX";
-                  else return value + "%";
+                  return value + "%";
                 },
               },
               beginAtZero: false,

@@ -18,20 +18,16 @@ const LineChart = ({ datasets }) => {
 
     if (datasets && chart) {
       let tmp = [];
+
       let timestamp = [];
 
       datasets.map((value) => {
-        tmp.push(parseInt(value.temperature));
+        tmp.push(value.temperature);
         timestamp.push(moment(value.timestamp).format("LT")); // 17:52
       });
 
-      /*  chart.config.data.datasets[0].data = tmp.slice(-12);
-      chart.config.data.datasets[0].labels = timestamp.slice(-12);
- */
-      chart.data.labels = timestamp.slice(-12);
-      chart.data.datasets.forEach((dataset) => {
-        dataset.data = tmp.slice(-12);
-      });
+      chart.config.data.datasets[0].data = tmp.slice(-12);
+      chart.config.data.labels = timestamp.slice(-12);
       chart.update();
     }
   }, [datasets, chart]);
@@ -132,6 +128,16 @@ const LineChart = ({ datasets }) => {
               fill: "start",
               lineTension: 0,
             },
+            /* {
+              backgroundColor: "transparent",
+              label: "Humidity",
+              data: hum,
+              borderColor: "#229a48",
+              borderWidth: 2,
+              fill: "start",
+              lineTension: 0,
+              pointBorderWidth: "0",
+            }, */
           ],
         },
         options: {

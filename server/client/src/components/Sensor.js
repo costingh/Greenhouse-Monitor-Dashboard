@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/Sensor.css";
 import SensorChart from "./SensorChart";
 
@@ -60,7 +60,7 @@ function Sensor({ chartID, datasets, sensorName, sensorNumber }) {
             : sensorName === "Moisture"
             ? datasets.length && datasets[datasets.length - 1].temperature + "%"
             : datasets.length &&
-              datasets[datasets.length - 1].luminosity + " LUX"}
+              datasets[datasets.length - 1].luminosity + " %"}
         </span>
         <br></br>
         <div style={{ color: "#a5acb9", cursor: "pointer" }}>More info</div>

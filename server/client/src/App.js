@@ -18,9 +18,9 @@ function App() {
 
   const getSensorsData = async () => {
     const resp = await axios.get("/retrieve-data");
-    setSensorValues(resp.data.values);
+    setSensorValues(resp.data.results);
     //console.log(resp);
-    setTimeout(getSensorsData, 5000);
+    setTimeout(getSensorsData, 15000);
   };
 
   return (
