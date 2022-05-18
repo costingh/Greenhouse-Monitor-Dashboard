@@ -12,16 +12,11 @@
 
 DHT dht(DHTPIN, DHTTYPE);
 
-String AP = "Ionica";                // ssid
-String PASS = "ioana123";           // password
-String API = "RHI038IPL0EGGXB0";   // Write API KEY
-String HOST = "api.thingspeak.com";
-String PORT = "80";
-
 int countTrueCommand;
 int countTimeCommand; 
 boolean found = false; 
-
+int timestamp = 0;
+char tmp[5], hum[5], moist[5], lum[5];
 SoftwareSerial esp8266(RX,TX); 
   
 void setup() {
@@ -32,56 +27,82 @@ void setup() {
   sendCommand("AT+RST",5,"OK");
   sendCommand("AT",5,"OK");
   sendCommand("AT+CWMODE=1",5,"OK");
-  sendCommand("AT+CWJAP=\""+ AP +"\",\""+ PASS +"\"",20,"OK");
+  
+  sendCommand("AT+CWJAP=\"Ionica\",\"ioana123\"",20,"OK");
 }
 
 void loop() {
-     String getData = "GET /update?api_key="+ API +"&field1="+getTemperatureValue()+"&field2="+getHumidityValue()+"&field3=" + getMoistureValue() + "&field4=" + getLuminosityValue();
+  if (millis() - timestamp > 16000) {
+     // String getData = "GET /update?api_key="+ API +"&field1="+getTemperatureValue()+"&field2="+getHumidityValue()+"&field3=" + getMoistureValue() + "&field4=" + getLuminosityValue();
+     char getData[256] = "GET /update?api_key=RHI038IPL0EGGXB0&field1=";
+     
+     int t = getTemperatureValue();
+     itoa(t, tmp, 10);
+     strcat(getData,tmp);
+
+     strcat(getData, "&field2=");
+     int h = getHumidityValue();
+     itoa(h, hum, 10);
+     strcat(getData,hum);
+     
+     strcat(getData, "&field3=");
+     int m = getMoistureValue();
+     itoa(m, moist, 10);
+     strcat(getData, moist);
+     
+     strcat(getData, "&field4=");
+     int l = getLuminosityValue();
+     itoa(l, lum, 10);
+     strcat(getData,lum);
+
      sendCommand("AT+CIPMUX=1",5,"OK");
-     sendCommand("AT+CIPSTART=0,\"TCP\",\""+ HOST +"\","+ PORT,15,"OK");
-     sendCommand("AT+CIPSEND=0," +String(getData.length()+4),4,">");
+     sendCommand("AT+CIPSTART=0,\"TCP\",\"api.thingspeak.com\",80",15,"OK");
+
+     sendCommand("AT+CIPSEND=0,91", 4, ">");
      esp8266.println(getData);
-     delay(1500);
      countTrueCommand++;
      sendCommand("AT+CIPCLOSE=0",5,"OK");
-     delay(16000);
+     
+     timestamp = millis(); // reset the timer
+   }
+    
 }
 
-String getLuminosityValue(){    
+int getLuminosityValue(){    
 //    float out = float(analogRead(LIGHT)) * (VIN / float(1023)); // Conversion analog to voltage
 //    float resistance = (R * (VIN - out))/out;                   // Conversion voltage to resistance
 //    int lux=500/resistance;                                     // Conversion resitance to lux
-    float l =  analogRead(LIGHT)/1023.00 * 100;
+    int l =  analogRead(LIGHT)/1023.00 * 100;
     Serial.print("Light(%) = ");
     Serial.print(l);
     Serial.println("");
     delay(50);
-    return String(l); 
+    return l; 
 }
 
-String getMoistureValue(){
-    float m =  ( 100 - ( (analogRead(MOISTURE)/1023.00) * 100 ) );
+char* getMoistureValue(){
+    int m =  ( 100 - ( (analogRead(MOISTURE)/1023.00) * 100 ) );
     Serial.print("Moisture(%) = ");
     Serial.print(m);
     Serial.println("");
     delay(50);
-    return String(m); 
+    return m;
 }
 
-String getTemperatureValue(){
+char* getTemperatureValue(){
     Serial.print("Temperature: ");
     Serial.print(dht.readTemperature());
     Serial.println();
-    float t = dht.readTemperature(); 
-    return String(t);
+    int t = dht.readTemperature(); 
+    return t;
 }
 
-String getHumidityValue(){
+char* getHumidityValue(){
     Serial.print("Humidity   : ");
     Serial.print(dht.readHumidity());
     Serial.println();
-    float h = dht.readHumidity(); 
-    return String(h);
+    int h = dht.readHumidity(); 
+    return h;
 }
 
 void sendCommand(String command, int maxTime, char readReplay[]) {
