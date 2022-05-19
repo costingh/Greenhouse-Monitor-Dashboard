@@ -72,7 +72,7 @@ const SensorChart = ({ datasets, chartID, sensorName }) => {
           datasets: [
             {
               backgroundColor: "transparent",
-              label: "Humidity",
+              label: { sensorName },
               data:
                 sensorName === "Humidity"
                   ? hum.slice(-8)

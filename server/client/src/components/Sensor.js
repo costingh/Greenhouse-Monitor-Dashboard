@@ -58,7 +58,7 @@ function Sensor({ chartID, datasets, sensorName, sensorNumber }) {
           {sensorName === "Humidity"
             ? datasets.length && datasets[datasets.length - 1].humidity + "%"
             : sensorName === "Moisture"
-            ? datasets.length && datasets[datasets.length - 1].temperature + "%"
+            ? datasets.length && datasets[datasets.length - 1].moisture + "%"
             : datasets.length &&
               datasets[datasets.length - 1].luminosity + " %"}
         </span>
