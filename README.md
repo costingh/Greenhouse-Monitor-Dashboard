@@ -58,6 +58,10 @@ Serverul este realizat folosind JavaScript (React.js pentru partea de frontend s
 
 ### Pornire Server
 
+Server-ul se gaseste live pe heroku, accesand link-ul: [Demo Server](https://arduino-server-esp.herokuapp.com/)
+
+Alternativ, acesta poate fi pornit si local:
+
 1. `git clone https://github.com/costingh/proiect-smp.git`
 2. `cd server` and run `npm install`
 3. `cd server/client` and run `npm install`
